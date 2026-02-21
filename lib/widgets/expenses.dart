@@ -11,78 +11,16 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _registeredExpenses = [
-    Expense(
-      title: 'Flutter Course',
-      amount: 19.99,
-      date: DateTime.now(),
-      category: Category.work,
-    ),
-    Expense(
-      title: 'Cinema',
-      amount: 15.69,
-      date: DateTime.now(),
-      category: Category.leisure,
-    ),
-    Expense(
-      title: 'Groceries',
-      amount: 150.99,
-      date: DateTime.now(),
-      category: Category.food,
-    ),
-    Expense(
-      title: 'Bus Ticket',
-      amount: 2.99,
-      date: DateTime.now(),
-      category: Category.travel,
-    ),
-    Expense(
-      title: 'Electricity Bill',
-      amount: 75.50,
-      date: DateTime.now(),
-      category: Category.work,
-    ),
-    Expense(
-      title: 'Dinner',
-      amount: 45.00,
-      date: DateTime.now(),
-      category: Category.food,
-    ),
-    Expense(
-      title: 'Gym Membership',
-      amount: 29.99,
-      date: DateTime.now(),
-      category: Category.leisure,
-    
-    ),
-    Expense(
-      title: 'Flight Ticket',
-      amount: 299.99,
-      date: DateTime.now(),
-      category: Category.travel,
-    ),
-    Expense(
-      title: 'Book',
-      amount: 12.99,
-      date: DateTime.now(),
-      category: Category.work,
-    ),
-    Expense(
-      title: 'Coffee',
-      amount: 4.50,
-      date: DateTime.now(),
-      category: Category.food,
-    ),
-    Expense(
-      title: 'Concert',
-      amount: 120.00,
-      date: DateTime.now(),
-      category: Category.leisure,
-    ),
-  ];
+  final List<Expense> _registeredExpenses = [];
 
+
+  void _addExpense(Expense expense){
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
+  }
   void _openExpenseOverlay(){
-    showModalBottomSheet(context: context, builder: (ctx) => const NewExpense());
+    showModalBottomSheet(context: context, builder: (ctx) => NewExpense(onAddExpense: _addExpense));
   }
 
   @override
